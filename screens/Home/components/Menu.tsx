@@ -1,14 +1,7 @@
-import React, { useState } from 'react';
-import {
-  StyleSheet,
-  TouchableOpacity,
-  FlatList,
-  ScrollView,
-} from 'react-native';
+import React from 'react';
+import { StyleSheet, FlatList } from 'react-native';
 import { SearchCategory } from '../Home.types';
 import Chip from './Chip';
-
-import { palette } from '../../../config';
 
 interface MenuProps {
   data: SearchCategory[];

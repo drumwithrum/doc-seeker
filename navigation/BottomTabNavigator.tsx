@@ -28,7 +28,7 @@ export default function BottomTabNavigator() {
           ),
         }}
       />
-      {/* <BottomTab.Screen
+      <BottomTab.Screen
         name="TabTwo"
         component={TabTwoNavigator}
         options={{
@@ -36,7 +36,7 @@ export default function BottomTabNavigator() {
             <TabBarIcon name="ios-code" color={color} />
           ),
         }}
-      /> */}
+      />
     </BottomTab.Navigator>
   );
 }
@@ -74,7 +74,7 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        options={{ headerTitle: 'Tab Two Title', headerShown: false }}
       />
     </TabTwoStack.Navigator>
   );

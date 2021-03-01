@@ -3,3 +3,7 @@ export interface SearchCategory {
   Icon: React.Component | any;
   disabled?: boolean;
 }
+
+export interface City {
+  text: string;
+}

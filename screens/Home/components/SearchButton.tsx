@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-
 import { Text } from '../../../components/Themed';
-
 import { palette } from '../../../config';
 
 export type TouchableOpacityProps = Omit<TouchableOpacity['props'], 'onPress'>;

@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Image } from 'react-native';
-
 import { Text, View } from '../../components/Themed';
 import { SearchForm } from './components';
-
 import { palette, strings } from '../../config';
 
-export default function Home() {
-  const [text, setText] = useState('');
+export default function Home({ navigation }: any) {
+  const nav = () => {
+    navigation.navigate('TabTwo');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -27,7 +28,7 @@ export default function Home() {
           <Text style={styles.infoSubtitle}>{strings.SEEK_ACROSS}</Text>
         </View>
       </View>
-      <SearchForm />
+      <SearchForm onInputClick={nav} />
     </View>
   );
 }

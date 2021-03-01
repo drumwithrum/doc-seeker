@@ -8,4 +8,5 @@ export default {
   SPECIALIZATION_OR_LAST_NAME: 'Specjalizacja lub nazwisko',
   SEARCH: 'Szukaj',
   UNKNOWN: 'Nieznany Lekarz',
+  TYPE_TO_SEARCH: 'Wpisz by wyszukać',
 };
