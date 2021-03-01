@@ -3,6 +3,9 @@ import { StyleSheet, Image } from 'react-native';
 
 import { Text, View } from '../../../components/Themed';
 import { Input } from '../../../components';
+import SearchButton from './SearchButton';
+import Menu from './Menu';
+import { categoriesMocked } from '../Home.config';
 
 import { palette, strings } from '../../../config';
 
@@ -11,6 +14,7 @@ export default function SearchForm() {
   const [city, setCity] = useState('');
   return (
     <View style={styles.wrapper}>
+      <Menu data={categoriesMocked} />
       <Input
         onChange={setLocation}
         value={location}
@@ -22,6 +26,11 @@ export default function SearchForm() {
         value={city}
         placeholder={strings.COVID_TESTS}
         style={styles.input}
+      />
+      <SearchButton
+        onPress={() => null}
+        title={strings.SEARCH}
+        style={styles.button}
       />
     </View>
   );
@@ -46,5 +55,8 @@ const styles = StyleSheet.create({
   input: {
     alignSelf: 'stretch',
     marginVertical: 4,
+  },
+  button: {
+    marginTop: 8,
   },
 });

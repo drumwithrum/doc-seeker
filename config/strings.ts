@@ -1,6 +1,6 @@
 export default {
-  FIND_DOCTOR: 'Znajdź lekarza i umów wizytę',
-  SEEK_ACROSS: 'Szukaj wśród 146 000 lekarzy.',
+  FIND_DOCTOR: 'Znajdź lekarza i umów wizytę już dziś',
+  SEEK_ACROSS: 'Szukaj pośród 146000 lekarzy',
   DOCTORS_OFFICE: 'W gabinecie',
   ONLINE: 'Online',
   NEW: 'Nowość',

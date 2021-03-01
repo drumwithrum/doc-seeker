@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image } from 'react-native';
 
-import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
-import { Input } from '../../components';
 import { SearchForm } from './components';
 
 import { palette, strings } from '../../config';
@@ -19,7 +17,16 @@ export default function Home() {
         />
         <Text style={styles.title}>{strings.UNKNOWN}</Text>
       </View>
-      <View style={styles.infoBlock}></View>
+      <View style={styles.infoBlockLayout}>
+        <Image
+          style={styles.infoImage}
+          source={require('../../assets/images/doctor.png')}
+        />
+        <View style={styles.infoWrapper}>
+          <Text style={styles.infoTitle}>{strings.FIND_DOCTOR}</Text>
+          <Text style={styles.infoSubtitle}>{strings.SEEK_ACROSS}</Text>
+        </View>
+      </View>
       <SearchForm />
     </View>
   );
@@ -29,7 +36,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     height: 100,
     padding: 10,
     paddingTop: 20,
@@ -58,5 +65,31 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     marginBottom: 30,
   },
-  infoBlock: {},
+  infoBlockLayout: {
+    resizeMode: 'contain',
+    flexDirection: 'row',
+    alignSelf: 'stretch',
+    justifyContent: 'space-between',
+    paddingHorizontal: 15,
+    paddingRight: 20,
+  },
+  infoTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    textAlign: 'right',
+  },
+  infoSubtitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'right',
+    color: 'rgba(255,255,255, 0.6)',
+  },
+  infoImage: {
+    height: 200,
+    width: 140,
+  },
+  infoWrapper: {
+    flex: 1,
+    alignSelf: 'center',
+  },
 });
