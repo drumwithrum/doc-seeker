@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { StyleSheet, Image } from 'react-native';
 import { Text, View } from '../../components/Themed';
 import { SearchForm } from './components';

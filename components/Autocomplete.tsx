@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { Text, View, TouchableOpacity } from 'react-native';
 import AutocompleteBase from 'react-native-autocomplete-input';
 import { palette } from '../config';
@@ -10,6 +10,8 @@ interface AutocompleteProps {
   onSelect: (val: string) => any;
   style?: any;
   value: string;
+  onChange: (value: string) => any;
+  showRawData?: boolean;
 }
 
 const Autocomplete = ({
@@ -18,6 +20,8 @@ const Autocomplete = ({
   style,
   onSelect,
   value,
+  onChange,
+  showRawData,
   ...props
 }: AutocompleteProps) => {
   const [query, setQuery] = useState('');
@@ -31,11 +35,17 @@ const Autocomplete = ({
   useEffect(() => {
     if (value) setQuery(value);
   }, [value]);
+  useEffect(() => {
+    if (query.length >= 3) {
+      onChange(query);
+    }
+  }, [query]);
+
   return (
     <View style={{ ...styles.wrapper, ...style }}>
       <AutocompleteBase
         hideResults={query.length < 3 || !showResults}
-        data={filteredData}
+        data={showRawData ? data : filteredData}
         value={query}
         placeholder={placeholder}
         onChangeText={(text) => {
@@ -70,7 +80,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     top: 0,
     zIndex: 1,
-    left: 0,
+    left: 40,
     right: 0,
   },
   autocomplete: {
@@ -92,11 +102,11 @@ const styles = StyleSheet.create({
   },
   list: {
     alignSelf: 'stretch',
-    left: -10,
+    left: -50,
     borderColor: palette.grey[200],
     borderRadius: 4,
     borderWidth: 1,
-    minWidth: '100%',
+    minWidth: Dimensions.get('window').width - 20,
     padding: 0,
   },
 });

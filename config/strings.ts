@@ -9,4 +9,5 @@ export default {
   SEARCH: 'Szukaj',
   UNKNOWN: 'Nieznany Lekarz',
   TYPE_TO_SEARCH: 'Wpisz by wyszukać',
+  LOCATION: 'Lokalizacja',
 };

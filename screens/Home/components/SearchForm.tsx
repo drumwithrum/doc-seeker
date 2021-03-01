@@ -35,7 +35,7 @@ const SearchForm = ({ onInputClick }: SearchFormProps) => {
       <Input
         onChange={() => null}
         value={location}
-        placeholder={strings.COVID_TESTS}
+        placeholder={strings.LOCATION}
         onFocus={() => {
           dispatch({ type: Actions.SET_SEARCH_TYPE, payload: 'location' });
           onInputClick();
@@ -46,6 +46,7 @@ const SearchForm = ({ onInputClick }: SearchFormProps) => {
         onPress={() => null}
         title={strings.SEARCH}
         style={styles.button}
+        disabled={!location || !doctor}
       />
     </View>
   );
