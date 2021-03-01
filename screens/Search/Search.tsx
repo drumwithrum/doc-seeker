@@ -1,13 +1,13 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Image, TouchableOpacity } from 'react-native';
 import axios from 'axios';
-import { Autocomplete } from '../components';
-import { Text, View } from '../components/Themed';
-import { CitiesMocked } from './Home/Home.config';
-import { AppContext } from '../utils/Context';
-import { strings } from '../config';
-import ArrowLeft from '../assets/images/arrowLeft.svg';
-import { Actions } from '../utils/reducers';
+import { Autocomplete } from '../../components';
+import { View } from '../../components/Themed';
+import { CitiesMocked } from '../Home/Home.config';
+import { AppContext } from '../../utils/Context';
+import { strings } from '../../config';
+import ArrowLeft from '../../assets/images/arrowLeft.svg';
+import { Actions } from '../../utils/reducers';
 
 export default function Search({ navigation }: any) {
   const {
@@ -39,7 +39,7 @@ export default function Search({ navigation }: any) {
           placeholder={strings.TYPE_TO_SEARCH}
           onSelect={onSelect}
           onChange={async (query) => {
-            if (searchType !== 'doctor') return;
+            if (!isSearchingDoctors) return;
             const response = await axios.post(
               'https://docplanner-1.algolia.io/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20JavaScript%20(4.2.0)%3B%20Browser%20(lite)&x-algolia-api-key=90a529da12d7e81ae6c1fae029ed6c8f&x-algolia-application-id=docplanner',
               {
