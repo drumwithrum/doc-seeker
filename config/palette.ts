@@ -9,6 +9,10 @@ export default {
     black: '#000',
     white: '#fff',
   },
+  grey: {
+    100: '#E0E0E0',
+    200: '#C1C1C1',
+  },
   actions: {
     hover: 'hsla(0,0%,100%,.3)',
   },

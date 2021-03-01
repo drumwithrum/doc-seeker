@@ -26,11 +26,41 @@ const SearchButton = ({
 }: SearchButtonProps) => (
   <TouchableOpacity
     onPress={onPress}
-    style={{ ...styles.wrapper, ...(style as object) }}
+    disabled={disabled}
+    style={{
+      ...styles.wrapper,
+      ...(style as object),
+      ...(isActive
+        ? styles.wrapperActive
+        : disabled
+        ? styles.wrapperDisabled
+        : {}),
+    }}
     {...props}
   >
-    {Icon && <Icon />}
-    <Text style={styles.title}>{title}</Text>
+    {Icon && (
+      <Icon
+        fill={
+          isActive
+            ? palette.secondary.main
+            : disabled
+            ? palette.grey[200]
+            : palette.common.white
+        }
+      />
+    )}
+    <Text
+      style={{
+        ...styles.title,
+        ...(isActive
+          ? styles.titleActive
+          : disabled
+          ? styles.titleDisabled
+          : {}),
+      }}
+    >
+      {title}
+    </Text>
   </TouchableOpacity>
 );
 
@@ -47,6 +77,19 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 12,
     height: 40,
+  },
+  wrapperActive: {
+    backgroundColor: palette.common.white,
+  },
+  wrapperDisabled: {
+    backgroundColor: palette.grey[100],
+    borderColor: palette.grey[100],
+  },
+  titleActive: {
+    color: palette.common.black,
+  },
+  titleDisabled: {
+    color: palette.grey[200],
   },
   title: {
     fontSize: 16,
