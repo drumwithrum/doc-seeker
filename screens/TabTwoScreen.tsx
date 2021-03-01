@@ -1,14 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Image } from 'react-native';
 import { Autocomplete } from '../components';
 import { Text, View } from '../components/Themed';
 import { CitiesMocked } from './Home/Home.config';
+import { AppContext } from '../utils/Context';
 import { strings } from '../config';
+import { Actions } from '../utils/reducers';
 
 export default function Search({ navigation }: any) {
-  console.log(navigation);
-  const nav = () => {
-    navigation.navigate('TabTwo');
+  const {
+    dispatch,
+    state: { searchType, doctor, location },
+  } = useContext(AppContext);
+  const onSelect = (value: string) => {
+    dispatch({
+      type: searchType === 'doctor' ? Actions.SET_DOCTOR : Actions.SET_LOCATION,
+      payload: value,
+    });
+    navigation.navigate('TabOne');
   };
 
   return (
@@ -16,7 +25,9 @@ export default function Search({ navigation }: any) {
       <View style={styles.content}>
         <Autocomplete
           data={CitiesMocked}
+          value={searchType === 'doctor' ? doctor : location}
           placeholder={strings.TYPE_TO_SEARCH}
+          onSelect={onSelect}
         />
       </View>
     </View>

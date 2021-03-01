@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Text, View, TouchableOpacity } from 'react-native';
 import AutocompleteBase from 'react-native-autocomplete-input';
-import { palette, strings } from '../config';
+import { palette } from '../config';
 
 interface AutocompleteProps {
   placeholder?: string;
   data: any[];
+  onSelect: (val: string) => any;
   style?: any;
+  value: string;
 }
 
 const Autocomplete = ({
   placeholder,
   data,
   style,
+  onSelect,
+  value,
   ...props
 }: AutocompleteProps) => {
   const [query, setQuery] = useState('');
@@ -24,6 +28,9 @@ const Autocomplete = ({
       item.text &&
       item.text.toLowerCase().startsWith(query.toLowerCase())
   );
+  useEffect(() => {
+    if (value) setQuery(value);
+  }, [value]);
   return (
     <View style={{ ...styles.wrapper, ...style }}>
       <AutocompleteBase
@@ -41,7 +48,7 @@ const Autocomplete = ({
           <TouchableOpacity
             onPress={() => {
               setShowResults(false);
-              setQuery(item.text);
+              onSelect(item.text);
             }}
             style={styles.autocompleteItem}
           >
@@ -78,7 +85,6 @@ const styles = StyleSheet.create({
     height: 40,
     fontSize: 16,
     padding: 10,
-    // backgroundColor: palette.common.white,
     minWidth: '100%',
   },
   input: {
